@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT exists decathlon;

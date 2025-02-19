@@ -1,0 +1,40 @@
+services:
+  decathlon-db:
+    container_name: decathlon-db
+    image: postgres:13.3-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "15432:5432"
+    networks:
+      - app-network
+
+  decathlon-test-db:
+    container_name: decathlon-test-db
+    image: postgres:13.3-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "25432:5432"
+    networks:
+      - app-network
+
+  decathlon-api:
+    container_name: api
+    build: ..
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://decathlon-db:5432/postgres
+      SERVER_PORT: 8000
+    depends_on:
+      - decathlon-db
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
