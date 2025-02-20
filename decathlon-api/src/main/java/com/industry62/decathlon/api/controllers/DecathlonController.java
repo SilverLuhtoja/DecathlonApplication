@@ -27,8 +27,8 @@ public class DecathlonController {
   private final EventMapper mapper;
 
   @GetMapping
-  public List<Event> getEvents() {
-    return service.getEvents();
+  public ResponseEntity<List<Event>> getEvents() {
+    return ResponseEntity.ok(service.getEvents());
   }
 
   @PostMapping
@@ -41,6 +41,6 @@ public class DecathlonController {
   @DeleteMapping("/delete/{eventName}")
   public ResponseEntity<String> deleteEvent(@PathVariable String eventName) {
     service.deleteEvent(eventName);
-    return ResponseEntity.ok("Event :" + eventName + " has been deleted.");
+    return ResponseEntity.ok("Event : " + eventName + " has been deleted.");
   }
 }
