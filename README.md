@@ -10,7 +10,7 @@ Backend :
 - directory: decathlon-api
     
 Frontend: 
-- language: Vue
+- framework: Vue
 - port: 5173
 - directory: decathlon-app
 
