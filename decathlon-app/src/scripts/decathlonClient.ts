@@ -10,7 +10,7 @@ const decathlonClient = {
     }
   },
 
-  postEvent: async (eventName, points) => {
+  postEvent: async (eventName: string | null, points: number | null) => {
     const requestBody = JSON.stringify({ eventName, points })
     const response = await fetch(URL, {
       method: 'POST',
@@ -21,18 +21,18 @@ const decathlonClient = {
     })
 
     if (!response.ok) {
-      let body = await response.json()
+      const body = await response.json()
       throw new Error(body.message)
     }
   },
 
-  deleteEvent: async (eventName) => {
+  deleteEvent: async (eventName: string) => {
     const response = await fetch(URL + '/delete/' + eventName, {
       method: 'DELETE',
     })
 
     if (!response.ok) {
-      let body = await response.json()
+      const body = await response.json()
       throw new Error(body.message)
     }
   },
