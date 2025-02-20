@@ -27,6 +27,21 @@ All endpoints are prefixed with `/api`.
 
 Running the application locally, the base URL will be: `http://localhost:8000/api`
 
+> ALLOWED EVENT TYPES [ passed as **eventName** in requests ]:
+```
+  1. HUNDRED_METERS
+  2. LONG_JUMP
+  3. SHOT_PUT
+  4. HIGH_JUMP
+  5. FOUR_HUNDRED_METERS
+  6. HUNDRED_TEN_METERS_HURDLES
+  7. DISCUS_THROW
+  8. POLE_VAULT
+  9. JAVELIN_THROW
+  10. FIFTEEN_HUNDRED_METERS
+```
+
+
 > **[GET]:** `/api` = Retuns List of Events
 ```
 Response[status=200]:
