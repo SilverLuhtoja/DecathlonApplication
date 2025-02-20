@@ -62,33 +62,43 @@ onMounted(getEvents);
 </script>
 
 <template>
-  <transition name="fade">
-    <FlashMessage v-if="error" :message="error" />
-  </transition>
+  <main>
+    <transition name="fade">
+      <FlashMessage v-if="error" :message="error" />
+    </transition>
+    
+    <h1> Decathlon APP </h1>
+      
+    <div v-if="loading">Retrieving data...</div>
+    <div v-else>
+      <h2>Events 10 / {{ finishedEventsCount }} finished </h2>
+      <h2>Total points : {{ totalScore }}</h2>
+      
+      <EventTable
+        :events="events"
+        @edit-event="openInput"
+        @delete-event="deleteEvent"
+      />
+    </div>
 
-  <h1> Welcome To Decathlon APP </h1>
-
-  <div v-if="loading">Retrieving data...</div>
-  <div v-else>
-    <h2>Events 10 / {{ finishedEventsCount }} finished </h2>
-    <h2>Total points : {{ totalScore }}</h2>
-
-    <EventTable
-      :events="events"
-      @edit-event="openInput"
-      @delete-event="deleteEvent"
+    <ScoreModal
+      v-if="selectedItem"
+      :item="selectedItem"
+      v-model:score="eventScoreInput"
+      @save="saveOrUpdateEvent"
+      @close="closeInput"
     />
-  </div>
-
-  <ScoreModal
-    v-if="selectedItem"
-    :item="selectedItem"
-    v-model:score="eventScoreInput"
-    @save="saveOrUpdateEvent"
-    @close="closeInput"
-  />
+  </main>
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {}
+main{
+  background: rgb(255, 255, 255);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+h1{
+  text-align: center;
+}
 </style>

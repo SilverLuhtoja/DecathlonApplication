@@ -59,14 +59,14 @@ input {
   height: 2rem;
   width: 4rem;
   margin: 1rem;
-  background: rgb(155, 238, 155);
+  background:  rgb(95, 201, 95);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
 }
 
-.modal-save-btn :hover {
-  background: rgb(131, 221, 131);
+.modal-save-btn:hover {
+  background:  rgb(113, 248, 113);
 }
 
 .modal-close-btn {

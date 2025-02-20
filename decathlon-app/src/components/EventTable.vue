@@ -35,8 +35,8 @@ const remainingEvents = computed(() => {
                 <td>{{ item.eventType }}</td>
                 <td>{{ item.points }}</td>
                 <td>
-                    <button @click="$emit('edit-event', EVENTS[item.eventType as EventKey], item.eventType, item.points)">Edit</button>
-                    <button @click="$emit('delete-event', item.eventType)">Delete</button>
+                    <button class="edit-btn" @click="$emit('edit-event', EVENTS[item.eventType as EventKey], item.eventType, item.points)">Edit</button>
+                    <button class="delete-btn" @click="$emit('delete-event', item.eventType)">Delete</button>
                 </td>
             </tr>
             <!-- Remaining events -->
@@ -44,7 +44,7 @@ const remainingEvents = computed(() => {
                 <td>{{ item.description }}</td>
                 <td></td>
                 <td>
-                    <button @click="$emit('edit-event', item, key)">Add Points</button>
+                    <button class="add-btn" @click="$emit('edit-event', item, key)">Add Points</button>
                 </td>
             </tr>
         </tbody>
@@ -59,9 +59,43 @@ table tr th:first-child {
 td,
 th {
     border-bottom: 1px solid black;
+    padding: 0.5rem 0;
 }
 
 thead {
     font-size: 1.25rem;
+}
+
+button {
+    border: none;
+    border-radius: 0.2rem;
+    margin: 0.1rem;
+    min-height: 1.5rem;
+    padding: 0.2rem 0.5rem;
+    font-weight: 600;
+}
+
+.add-btn {
+    background-color: rgb(95, 201, 95);
+}
+
+.add-btn:hover {
+    background-color: rgb(113, 248, 113);
+}
+
+.edit-btn {
+    background-color: rgb(157, 159, 233);
+}
+
+.edit-btn:hover {
+    background-color:  rgb(196, 198, 255);
+}
+
+.delete-btn {
+    background-color: rgb(219, 141, 89);
+}
+
+.delete-btn:hover {
+    background-color:  rgb(255, 171, 115);
 }
 </style>

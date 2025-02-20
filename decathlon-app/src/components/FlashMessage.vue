@@ -13,7 +13,7 @@ const props = defineProps<{
 
 <style scoped>
 .flash-message {
-  background: red;
+  background: rgba(255, 0, 0, 0.753);
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -28,5 +28,13 @@ const props = defineProps<{
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 1024px) {
+  .flash-message {
+    position:fixed;
+    top: 50%;
+    width: 20rem;
+  }
 }
 </style>
