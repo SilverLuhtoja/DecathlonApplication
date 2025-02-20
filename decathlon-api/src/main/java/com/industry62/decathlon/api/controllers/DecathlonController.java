@@ -26,11 +26,6 @@ public class DecathlonController {
   private final DecathlonService service;
   private final EventMapper mapper;
 
-  // @GetMapping("/total")
-  // public ResponseEntity<Integer> getTotalPoints() {
-  // return ResponseEntity.ok(service.getTotalPoints());
-  // }
-
   @GetMapping
   public List<Event> getEvents() {
     return service.getEvents();
