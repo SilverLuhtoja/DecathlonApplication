@@ -3,7 +3,6 @@ package com.industry62.decathlon.api.repositories;
 import static com.industry62.decathlon.api.models.enums.DecathlonEventType.SHOT_PUT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.industry62.decathlon.api.mappers.EventMapper;
 import com.industry62.decathlon.api.models.Event;
 import com.industry62.decathlon.api.repositories.entities.EventEntity;
 import com.industry62.decathlon.config.IntegrationTest;
@@ -17,9 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class DecathlonRepositoryTest extends IntegrationTest {
-
-  @Autowired
-  private EventMapper mapper;
 
   @Autowired
   private DecathlonRepository repository;
