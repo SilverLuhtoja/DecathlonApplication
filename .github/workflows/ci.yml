@@ -37,3 +37,31 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
         working-directory: decathlon-api
+
+          # Build and test the frontend
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies and build frontend
+        run: |
+          npm install
+          npm run build
+        working-directory: decathlon-app
+
+      # Start the frontend dev server and verify it starts successfully
+      - name: Start and test frontend
+        working-directory: decathlon-app
+        run: |
+          nohup npm run dev &   # run the dev server in the background
+          # Poll for up to 60 seconds until the frontend responds on port 5173
+          for i in {1..30}; do
+            if curl -s http://localhost:5173 > /dev/null; then
+              echo "Frontend started successfully."
+              exit 0
+            fi
+            echo "Waiting for frontend to start..."
+            sleep 2
+          done
+          echo "Frontend failed to start in time."
+          exit 1
