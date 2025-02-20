@@ -20,11 +20,6 @@ public class DecathlonService {
     return repository.getRecords();
   }
 
-  public int getTotalPoints() {
-    List<Event> events = repository.getRecords();
-    return events.stream().mapToInt(Event::points).sum();
-  }
-
   public Event createOrUpdateEvent(Event event) {
     validate(event);
     return repository.createOrUpdateRecord(event);

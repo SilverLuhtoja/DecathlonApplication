@@ -25,7 +25,7 @@ public class DecathlonRepository {
   public Event createOrUpdateRecord(Event domain) {
     return decathlonJpaRepository.findByEventType(domain.eventType().name())
         .map(existingEntity -> updateEntity(existingEntity, domain))
-        .orElseGet(() -> saveNewEntity(domain));
+        .orElseGet(() -> createNewEntity(domain));
   }
 
   public void deleteRecord(String eventName) {
@@ -39,7 +39,7 @@ public class DecathlonRepository {
     return mapper.toDomain(decathlonJpaRepository.save(existingEntity));
   }
 
-  private Event saveNewEntity(Event domain) {
+  private Event createNewEntity(Event domain) {
     return mapper.toDomain(decathlonJpaRepository.save(mapper.toEntity(domain)));
   }
 }
