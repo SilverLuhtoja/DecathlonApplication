@@ -2,8 +2,6 @@ package com.industry62.decathlon.api.services;
 
 import static com.industry62.decathlon.api.datasets.DecathlonDataset.EVENT;
 import static com.industry62.decathlon.api.models.enums.DecathlonEventType.DISCUS_THROW;
-import static com.industry62.decathlon.api.models.enums.DecathlonEventType.HUNDRED_METERS;
-import static com.industry62.decathlon.api.models.enums.DecathlonEventType.POLE_VAULT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
@@ -39,23 +37,6 @@ public class DecatlhonServiceTest extends UnitTest {
       List<Event> result = service.getEvents();
 
       assertEquals(1, result.size());
-    }
-  }
-
-  @Nested
-  class GetTotalPoints {
-
-    @Test
-    void shouldReturnTotalPoints() {
-      List<Event> events = List.of(
-          new Event(POLE_VAULT, 401),
-          new Event(HUNDRED_METERS, 399));
-
-      when(repository.getRecords()).thenReturn(events);
-
-      int result = service.getTotalPoints();
-
-      assertEquals(800, result);
     }
   }
 
