@@ -32,6 +32,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - name: Make gradlew executable
-        run: chmod +x decathlon-api/gradlew
+        run: chmod +x gradlew
+        working-directory: decathlon-api
       - name: Build with Gradle
-        run: ./decathlon-api/gradlew build
+        run: ./gradlew build
+        working-directory: decathlon-api
