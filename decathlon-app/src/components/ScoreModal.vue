@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EventInfo } from '@/scripts/resources/events';
+import { EventInfo } from '@/scripts/resources/interfaces';
 import { ref, watch } from 'vue'
 
 const emits = defineEmits(['update:score', 'save', 'close'])
