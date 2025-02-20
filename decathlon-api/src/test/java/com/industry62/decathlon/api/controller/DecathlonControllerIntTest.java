@@ -64,7 +64,7 @@ class DecathlonControllerIntTest extends IntegrationTest {
     @Test
     @Sql("/testdata/create-events.sql")
     void shouldDeleteEvent() throws Exception {
-      String expectedResponseMessage = "Event :" + EVENT_NAME + " has been deleted.";
+      String expectedResponseMessage = "Event : " + EVENT_NAME + " has been deleted.";
       mockMvc.perform(delete(DELETE_ENDPOINT))
           .andExpect(status().isOk())
           .andExpect(content().string(expectedResponseMessage));
